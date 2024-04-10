@@ -22,7 +22,7 @@ public interface RecipeXApi {
   @PostMapping("/user")
   Mono<RestRecipeXUser> createUser(@Valid @RequestBody Username username);
 
-  @PostMapping("/recipe/{userId}")
+  @PostMapping("/recipes/{userId}")
   Mono<List<DbUserRecipe>> createRecipes(@PathVariable("userId") UUID userId,
                                          @RequestBody List<RestUserRecipe> restUserRecipes);
 
@@ -35,7 +35,7 @@ public interface RecipeXApi {
   @GetMapping("/recipe/by-title/{title}")
   Flux<RestUserRecipe> getRecipeByName(@PathVariable("title") String title);
 
-  @GetMapping("/recipe/by-tags")
+  @GetMapping("/recipes/by-tags")
   Flux<RestUserRecipe> getRecipeByTags(@RequestParam List<String> tags);
 
   @DeleteMapping("/recipe")
