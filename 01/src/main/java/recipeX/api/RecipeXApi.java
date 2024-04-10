@@ -1,9 +1,9 @@
 package recipeX.api;
 
-import recipeX.db.DbUserPost;
+import recipeX.db.DbUserRecipe;
 import recipeX.domain.Ids;
-import recipeX.rest.RestPostLiveUser;
-import recipeX.rest.RestUserPost;
+import recipeX.rest.RestRecipeXUser;
+import recipeX.rest.RestUserRecipe;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,19 +15,24 @@ import reactor.core.publisher.Mono;
 
 public interface RecipeXApi {
 
-  @PostMapping("/createUser")
-  Mono<RestPostLiveUser> createUser();
+  @PostMapping("/user")
+  Mono<RestRecipeXUser> createUser();
 
-  @PostMapping("/createUserPosts/{userId}")
-  Mono<List<DbUserPost>> createUserPosts(@PathVariable("userId") UUID userId,
-                                         @RequestBody List<RestUserPost> restUserPosts);
+  @PostMapping("/recipe/{userId}")
+  Mono<List<DbUserRecipe>> createRecipes(@PathVariable("userId") UUID userId,
+                                           @RequestBody List<RestUserRecipe> restUserRecipes);
 
-  @GetMapping("/getUser/{userId}")
-  Mono<RestPostLiveUser> getUser(@PathVariable("userId") UUID userId);
+  @GetMapping("/user/{userId}")
+  Mono<RestRecipeXUser> getUser(@PathVariable("userId") UUID userId);
+  @GetMapping("/recipe/{recipeId}")
+  Mono<DbUserRecipe> getRecipe(@RequestBody UUID recipeId);
 
-  @DeleteMapping("/deleteUserPost")
-  Mono<Void> deleteUserPost(@RequestBody Ids ids);
+  @GetMapping("/recipe/{tag}")
+  Mono<List<DbUserRecipe>> getRecipeByName(@RequestBody String recipeName);
 
-  @DeleteMapping("/deleteUser/{userId}")
+  @DeleteMapping("/recipe")
+  Mono<Void> deleteRecipe(@RequestBody Ids ids);
+
+  @DeleteMapping("/user/{userId}")
   Mono<Void> deleteUser(@PathVariable("userId") UUID userId);
 }

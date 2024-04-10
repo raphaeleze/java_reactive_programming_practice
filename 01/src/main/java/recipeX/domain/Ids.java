@@ -7,6 +7,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Ids {
 
-  private String postId;
+  private String recipeId;
   private String userId;
 }

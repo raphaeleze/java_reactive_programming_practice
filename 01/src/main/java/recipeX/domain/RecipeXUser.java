@@ -7,8 +7,8 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class PostLiveUser {
+public class RecipeXUser {
 
   private UUID id;
-  private List<UserPost> userPosts;
+  private List<UserRecipe> userRecipes;
 }

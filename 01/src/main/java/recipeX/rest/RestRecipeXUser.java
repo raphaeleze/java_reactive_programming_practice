@@ -2,7 +2,7 @@ package recipeX.rest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -10,10 +10,8 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @JsonInclude(Include.NON_NULL)
-public class RestUserPost {
+public class RestRecipeXUser {
 
-  private UUID postId;
-  private UUID userId;
-  private String content;
-  private LocalDateTime createdAt;
+  private UUID id;
+  private List<RestUserRecipe> userPosts;
 }

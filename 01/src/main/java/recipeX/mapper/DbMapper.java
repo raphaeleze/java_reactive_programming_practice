@@ -1,10 +1,10 @@
 package recipeX.mapper;
 
 
-import recipeX.db.DbPostLiveUser;
-import recipeX.db.DbUserPost;
-import recipeX.rest.RestPostLiveUser;
-import recipeX.rest.RestUserPost;
+import recipeX.db.DbRecipeXUser;
+import recipeX.db.DbUserRecipe;
+import recipeX.rest.RestRecipeXUser;
+import recipeX.rest.RestUserRecipe;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -15,10 +15,10 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface DbMapper extends UuidMapper {
 
-  DbPostLiveUser toDbDto(RestPostLiveUser restPostLiveUser);
+  DbRecipeXUser toDbDto(RestRecipeXUser restRecipeXUser);
 
 
-  DbUserPost toDbDto(RestUserPost restUserPost);
+  DbUserRecipe toDbDto(RestUserRecipe restUserRecipe);
 
-  List<DbUserPost> toDbDto(List<RestUserPost> restUserPost);
+  List<DbUserRecipe> toDbDto(List<RestUserRecipe> restUserRecipe);
 }
