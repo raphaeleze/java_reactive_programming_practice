@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Accessors(chain = true)
-@Document(collection = "posts")
+@Document(collection = "recipes")
 public class DbUserRecipe {
 
   @Id

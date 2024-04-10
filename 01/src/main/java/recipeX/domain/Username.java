@@ -1,19 +1,17 @@
-package recipeX.rest;
+package recipeX.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import java.util.List;
-import java.util.UUID;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import recipeX.domain.Username;
 
 @Data
 @Accessors(chain = true)
 @JsonInclude(Include.NON_NULL)
-public class RestRecipeXUser {
+public class Username {
 
-  private UUID id;
-  private Username username;
-  private List<RestUserRecipe> userPosts;
+  @NotBlank
+  private String name;
+  private String Surname;
 }

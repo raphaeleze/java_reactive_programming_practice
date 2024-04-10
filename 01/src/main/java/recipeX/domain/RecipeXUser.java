@@ -10,5 +10,6 @@ import lombok.experimental.Accessors;
 public class RecipeXUser {
 
   private UUID id;
+  private Username username;
   private List<UserRecipe> userRecipes;
 }
