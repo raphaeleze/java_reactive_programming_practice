@@ -32,7 +32,7 @@ public interface RecipeXApi {
   @GetMapping("/recipe/{recipeId}")
   Mono<RestUserRecipe> getRecipe(@PathVariable("recipeId") String recipeId);
 
-  @GetMapping("/recipe/by-title/{title}")
+  @GetMapping("/recipes/by-title/{title}")
   Flux<RestUserRecipe> getRecipeByName(@PathVariable("title") String title);
 
   @GetMapping("/recipes/by-tags")
