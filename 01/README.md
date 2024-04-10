@@ -76,7 +76,7 @@ This REST API allows users to manage recipes. Users can create, read, update, an
 
 ### Create Recipe
 **Method:** POST  
-**URL:** `/recipe/{userId}`  
+**URL:** `/recipes/{userId}`  
 **Body:**  
 ```json
 [
@@ -109,11 +109,11 @@ This REST API allows users to manage recipes. Users can create, read, update, an
 
 ### Get All Recipes with Tag
 **Method:** GET  
-**URL:** `/recipe/by-tags?tags=Italian`
+**URL:** `/recipes/by-tags?tags=Italian`
 
 **Query Params:**  
 - tags: Italian
 
 ### Get All Recipes with Title
 **Method:** GET  
-**URL:** `/recipe/by-title/Caprese Salad`
+**URL:** `/recipes/by-title/Caprese Salad`
