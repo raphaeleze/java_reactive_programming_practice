@@ -17,5 +17,6 @@ public class UserRecipe {
   private List<String> ingredients;
   private List<String> instructions;
   private List<String> tags;
+  private String imageUrl;
   private LocalDateTime createdAt;
 }
