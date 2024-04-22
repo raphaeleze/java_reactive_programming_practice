@@ -53,6 +53,11 @@ public class RecipeXController implements RecipeXApi {
   }
 
   @Override
+  public Mono<RestUserRecipe> updateRecipe(RestUserRecipe recipe) {
+    return recipeService.updateRecipe(recipe);
+  }
+
+  @Override
   public Mono<Void> deleteRecipe(Ids ids) {
     return recipeService.deleteRecipe(ids);
   }

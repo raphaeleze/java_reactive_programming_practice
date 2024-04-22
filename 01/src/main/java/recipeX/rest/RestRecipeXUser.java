@@ -15,5 +15,5 @@ public class RestRecipeXUser {
 
   private UUID id;
   private Username username;
-  private List<RestUserRecipe> userPosts;
+  private List<RestUserRecipe> recipes;
 }

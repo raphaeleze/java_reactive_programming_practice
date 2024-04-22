@@ -12,7 +12,7 @@ class UuidMapperTest {
   private final String uuidStr = "f47ac10b-58cc-4372-a567-0e02b2c3d479";
 
   @Test
-  public void givenUuidString_whenConvertToUuid_thenReturnUUid() {
+  void givenUuidString_whenConvertToUuid_thenReturnUUid() {
     // GIVEN
     var expectedUuid = UUID.fromString(uuidStr);
     // WHEN
@@ -22,7 +22,7 @@ class UuidMapperTest {
   }
 
   @Test
-  public void givenNullUuidString_whenConvertToUuid_thenReturnNull() {
+  void givenNullUuidString_whenConvertToUuid_thenReturnNull() {
     // GIVEN
     // WHEN
     var resultUuid = uuidMapper.toUuid(null);
@@ -31,7 +31,7 @@ class UuidMapperTest {
   }
 
   @Test
-  public void givenUuid_whenConvertToString_thenReturnUuidString() {
+  void givenUuid_whenConvertToString_thenReturnUuidString() {
     // GIVEN
     var uuid = UUID.fromString(uuidStr);
     // WHEN
@@ -41,7 +41,7 @@ class UuidMapperTest {
   }
 
   @Test
-  public void givenNullUuid_whenConvertToString_thenReturnNull() {
+  void givenNullUuid_whenConvertToString_thenReturnNull() {
     // GIVEN
     // WHEN
     var resultUuidStr = uuidMapper.toString(null);

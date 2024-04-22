@@ -21,7 +21,7 @@ This REST API allows users to manage recipes. Users can create, read, update, an
    - Endpoint: GET /recipes/{id}
    - Response: JSON object containing recipe details
 
-4. **Update a Recipe** 
+4. **Update a Recipe** *Done
    - Endpoint: PUT /recipes/{id}
    - Request Body: JSON containing updated recipe details (title, description, ingredients, instructions, tags)
    - Response: Updated recipe object

@@ -21,7 +21,7 @@ class DbMapperTest {
   private final DbMapper dbMapper = Mappers.getMapper(DbMapper.class);
 
   @Test
-  public void givenRestRecipeXUser_whenMapToDbDto_thenReturnDbRecipeXUser() {
+  void givenRestRecipeXUser_whenMapToDbDto_thenReturnDbRecipeXUser() {
     // GIVEN
     RestRecipeXUser restRecipeXUser = getRestRecipeXUser();
     // WHEN
@@ -30,11 +30,11 @@ class DbMapperTest {
     // THEN
     assertThat(result.getId()).isEqualTo(restRecipeXUser.getId().toString().toUpperCase());
     assertThat(result.getUsername()).isEqualTo(restRecipeXUser.getUsername());
-    assertThat(result.getUserPosts()).hasSize(restRecipeXUser.getUserPosts().size());
+    assertThat(result.getRecipes()).hasSize(restRecipeXUser.getRecipes().size());
   }
 
   @Test
-  public void givenRestUserRecipe_whenMapToDbDto_thenReturnDbUserRecipe() {
+  void givenRestUserRecipe_whenMapToDbDto_thenReturnDbUserRecipe() {
     // GIVEN
     RestUserRecipe restUserRecipe = getRestUserRecipe();
     // WHEN
@@ -47,7 +47,7 @@ class DbMapperTest {
   }
 
   @Test
-  public void givenListOfRestUserRecipe_whenMapToDbDto_thenReturnListOfDbUserRecipe() {
+  void givenListOfRestUserRecipe_whenMapToDbDto_thenReturnListOfDbUserRecipe() {
     // GIVEN
     var restUserRecipeList = Collections.singletonList(getRestUserRecipe());
     // WHEN
@@ -61,7 +61,7 @@ class DbMapperTest {
   }
 
   @Test
-  public void givenEmptyListRestUserRecipe_whenMapToDbDto_thenReturnEmptyList() {
+  void givenEmptyListRestUserRecipe_whenMapToDbDto_thenReturnEmptyList() {
     // GIVEN
     List<RestUserRecipe> restUserRecipeList = Collections.emptyList();
     // WHEN
@@ -72,7 +72,7 @@ class DbMapperTest {
   }
 
   @Test
-  public void givenRestUserRecipeWithNullFields_whenMapToDbDto_thenIgnoreNullFields() {
+  void givenRestUserRecipeWithNullFields_whenMapToDbDto_thenIgnoreNullFields() {
     // GIVEN
     var restUserRecipe = new RestUserRecipe()
         .setRecipeId(recipeId)
@@ -90,7 +90,7 @@ class DbMapperTest {
   }
 
   @Test
-  public void givenRestUserRecipeWithEmptyLists_whenMapToDbDto_thenMapEmptyLists() {
+  void givenRestUserRecipeWithEmptyLists_whenMapToDbDto_thenMapEmptyLists() {
     // GIVEN
     var restUserRecipe = new RestUserRecipe()
         .setRecipeId(recipeId)
@@ -108,7 +108,7 @@ class DbMapperTest {
     assertThat(result.getTags()).isEmpty();
   }
   @Test
-  public void givenRestUserRecipeWithNullLists_whenMapToDbDto_thenMapNullLists() {
+  void givenRestUserRecipeWithNullLists_whenMapToDbDto_thenMapNullLists() {
     // GIVEN
     var restUserRecipe = new RestUserRecipe()
         .setRecipeId(recipeId)
@@ -132,7 +132,7 @@ class DbMapperTest {
     return new RestRecipeXUser()
         .setId(userId)
         .setUsername(getUsername())
-        .setUserPosts(Collections.emptyList());
+        .setRecipes(Collections.emptyList());
   }
 
   private RestUserRecipe getRestUserRecipe() {

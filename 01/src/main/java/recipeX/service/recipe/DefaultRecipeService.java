@@ -17,5 +17,7 @@ public interface DefaultRecipeService {
 
   Flux<RestUserRecipe> getRecipeByTags(List<String> tags);
 
+  Mono<RestUserRecipe> updateRecipe(RestUserRecipe recipe);
+
   Mono<Void> deleteRecipe(Ids ids);
 }

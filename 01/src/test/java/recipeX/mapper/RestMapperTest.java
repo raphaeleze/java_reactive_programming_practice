@@ -24,7 +24,7 @@ class RestMapperTest {
 
 
   @Test
-  public void givenDbRecipeXUser_whenMapToRestDto_thenReturnRestRecipeXUser() {
+  void givenDbRecipeXUser_whenMapToRestDto_thenReturnRestRecipeXUser() {
     // GIVEN
     var dbRecipeXUser = getDbRecipeXUser();
     // WHEN
@@ -34,11 +34,11 @@ class RestMapperTest {
     assertThat(result.getId()).isEqualTo(UUID.fromString(dbRecipeXUser.getId()));
     assertThat(result.getUsername().getName()).isEqualTo(dbRecipeXUser.getUsername().getName());
     assertThat(result.getUsername().getSurname()).isEqualTo(dbRecipeXUser.getUsername().getSurname());
-    assertThat(result.getUserPosts()).hasSize(dbRecipeXUser.getUserPosts().size());
+    assertThat(result.getRecipes()).hasSize(dbRecipeXUser.getRecipes().size());
   }
 
   @Test
-  public void givenDbUserRecipe_whenMapToRestDto_thenReturnRestUserRecipe() {
+  void givenDbUserRecipe_whenMapToRestDto_thenReturnRestUserRecipe() {
     // GIVEN
     // WHEN
     var result = restMapper.toRestDto(dbUserRecipe1());
@@ -56,7 +56,7 @@ class RestMapperTest {
   }
 
   @Test
-  public void givenListOfDbUserRecipe_whenMapToRestDto_thenReturnListOfRestUserRecipe() {
+  void givenListOfDbUserRecipe_whenMapToRestDto_thenReturnListOfRestUserRecipe() {
     // GIVEN
     // WHEN
     var result = restMapper.toRestDto(dbUserRecipeList());
@@ -66,7 +66,7 @@ class RestMapperTest {
   }
 
   @Test
-  public void givenEmptyListOfDbUserRecipe_whenMapToRestDto_thenReturnEmptyListOfRestUserRecipe() {
+  void givenEmptyListOfDbUserRecipe_whenMapToRestDto_thenReturnEmptyListOfRestUserRecipe() {
     // GIVEN
     List<DbUserRecipe> dbUserRecipeList = Collections.emptyList();
     // WHEN
@@ -77,7 +77,7 @@ class RestMapperTest {
   }
 
   @Test
-  public void givenDbUserRecipeWithNullFields_whenMapToRestDto_thenIgnoreNullFields() {
+  void givenDbUserRecipeWithNullFields_whenMapToRestDto_thenIgnoreNullFields() {
     // GIVEN
     DbUserRecipe dbUserRecipe = new DbUserRecipe()
         .setRecipeId(recipeId)
@@ -102,7 +102,7 @@ class RestMapperTest {
     return new DbRecipeXUser()
         .setId(userId)
         .setUsername(getUsername())
-        .setUserPosts(dbUserRecipeList());
+        .setRecipes(dbUserRecipeList());
   }
 
   private Username getUsername() {

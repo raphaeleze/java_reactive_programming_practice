@@ -15,5 +15,5 @@ public class DbRecipeXUser {
   @Id
   private String id;
   private Username username;
-  private List<DbUserRecipe> userPosts;
+  private List<DbUserRecipe> recipes;
 }

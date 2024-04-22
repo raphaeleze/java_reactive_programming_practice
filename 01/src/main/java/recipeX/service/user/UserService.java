@@ -18,9 +18,9 @@ import recipeX.rest.RestRecipeXUser;
 @AllArgsConstructor
 public class UserService implements DefaultUserService {
   private static final String USER_DELETED_MESSAGE = "User {} deleted";
-  private static final String POST_DELETED_MESSAGE = "Posts associated with user {} deleted";
+  private static final String RECIPE_DELETED_MESSAGE = "Recipes associated with user {} deleted";
   private static final String USER_NOT_DELETED_MESSAGE = "Error deleting user {}";
-  private static final String POST_NOT_DELETED_MESSAGE = "Error deleting post {}";
+  private static final String RECIPE_NOT_DELETED_MESSAGE = "Error deleting recipe {}";
   private static final String USER_NOT_SAVED_MESSAGE = "Error saving user {}";
   private final DbUserRepository dbUserRepository;
   private final DbRecipeRepository dbRecipeRepository;
@@ -43,9 +43,12 @@ public class UserService implements DefaultUserService {
 
   @Override
   public Mono<RestRecipeXUser> getUser(UUID userId) {
-    var user = uuidMapper.toString(userId);
+    var userStringId = uuidMapper.toString(userId);
+    var recipes = dbRecipeRepository.findByUserId(userStringId)
+        .collectList().block(); // TODO : REMOVE BLOCK
 
-    return dbUserRepository.findById(user)
+    return dbUserRepository.findById(userStringId)
+        .map(recipeX -> recipeX.setRecipes(recipes))
         .map(restMapper::toRestDto);
   }
 
@@ -57,7 +60,7 @@ public class UserService implements DefaultUserService {
         .doOnError(info -> log.error(USER_NOT_DELETED_MESSAGE, user))
         .doOnSuccess(info -> log.info(USER_DELETED_MESSAGE, user))
         .then(dbRecipeRepository.deleteById(user))
-        .doOnError(info -> log.error(POST_NOT_DELETED_MESSAGE, user))
-        .doOnSuccess(info -> log.info(POST_DELETED_MESSAGE, user));
+        .doOnError(info -> log.error(RECIPE_NOT_DELETED_MESSAGE, user))
+        .doOnSuccess(info -> log.info(RECIPE_DELETED_MESSAGE, user));
   }
 }
