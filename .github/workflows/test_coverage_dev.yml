@@ -66,6 +66,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Set up Git user identity
+      run: |
+        git config --global user.email "raphaeleze@gmail.com"
+        git config --global user.name "GitHub Actions by Eze"
+
     - name: Create and push changes to feature branch
       run: |
         git checkout -b feature-branch
