@@ -1,0 +1,57 @@
+name: Test on Develop
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Clean project
+      run: |
+        cd 01
+        mvn clean
+
+  package:
+    needs: clean
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Build with Maven
+      run: |
+        cd 01
+        mvn --batch-mode --update-snapshots package
+
+  test:
+    needs: package
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Run Tests
+      run: |
+        cd 01
+        mvn --batch-mode test
