@@ -72,5 +72,5 @@ jobs:
       with:
         title: "Merge Develop into Main"
         branch: main
-        base: develop
+        base: dev
         body: "This pull request is automatically created after tests passed on the develop branch."
