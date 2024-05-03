@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ["Test on Develop"]
     branches:
-      - main
+      - dev
 
 jobs:
   create-pr-main:
