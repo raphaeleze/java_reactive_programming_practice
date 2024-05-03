@@ -1,5 +1,4 @@
-name: Test on Develop
-run-name: test-to-dev
+name: Test Developer Branch
 
 on:
   push:
