@@ -1,0 +1,25 @@
+name: Create Pull Request on Main
+
+on:
+  workflow_run:
+    workflows: ["Test on Develop"]
+    branches:
+      - main
+
+jobs:
+  create-pr-main:
+    if: github.event.workflow_run.conclusion == 'success'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        title: "Merge Develop into Main"
+        branch: main
+        base: develop
+        body: "This pull request is automatically created after tests passed on the develop branch."
