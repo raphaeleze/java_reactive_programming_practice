@@ -2,7 +2,7 @@ name: Create Pull Request on Main
 
 on:
   workflow_run:
-    workflows: ["Test on Develop"]
+    workflows: ["test-to-dev"]
     branches:
       - dev
     types:
