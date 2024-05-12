@@ -2,11 +2,10 @@ logging:
  level:
   recipeX: debug
 
-recipeX:
- aws:
-  s3:
-   region:
-   access-key:
-   secret-key:
-   publicEndpoint:
-   url-expiration:
+s3Properties:
+ region: us-east-1
+ bucket-name: your-bucket-name
+ access-key: your-access-key
+ secret-key: your-secret-key
+ public-endpoint: https://s3.amazonaws.com/your-public-endpoint
+ url-expiration: 5

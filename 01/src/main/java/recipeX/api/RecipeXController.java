@@ -12,6 +12,7 @@ import recipeX.domain.Ids;
 import recipeX.domain.Username;
 import recipeX.rest.RestRecipeXUser;
 import recipeX.rest.RestUserRecipe;
+import recipeX.rest.RestUserRecipeImage;
 import recipeX.service.recipe.DefaultRecipeService;
 import recipeX.service.user.DefaultUserService;
 
@@ -55,6 +56,11 @@ public class RecipeXController implements RecipeXApi {
   @Override
   public Mono<RestUserRecipe> updateRecipe(RestUserRecipe recipe) {
     return recipeService.updateRecipe(recipe);
+  }
+
+  @Override
+  public Mono<RestUserRecipeImage> uploadRecipeImage(String recipeId) {
+    return null;
   }
 
   @Override

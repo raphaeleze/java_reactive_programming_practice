@@ -17,6 +17,7 @@ import recipeX.domain.Ids;
 import recipeX.domain.Username;
 import recipeX.rest.RestRecipeXUser;
 import recipeX.rest.RestUserRecipe;
+import recipeX.rest.RestUserRecipeImage;
 
 public interface RecipeXApi {
 
@@ -41,10 +42,13 @@ public interface RecipeXApi {
 
   @PutMapping("/recipe")
   Mono<RestUserRecipe> updateRecipe(@Valid @RequestBody RestUserRecipe recipe);
-
+  @PutMapping("/recipe/{recipeId}")
+  Mono<RestUserRecipeImage> uploadRecipeImage(@PathVariable("recipeId") String recipeId);
   @DeleteMapping("/recipe")
   Mono<Void> deleteRecipe(@Valid @RequestBody Ids ids);
 
   @DeleteMapping("/user/{userId}")
   Mono<Void> deleteUser(@PathVariable("userId") UUID userId);
+
+
 }
